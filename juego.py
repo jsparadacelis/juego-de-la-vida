@@ -18,70 +18,72 @@ a = [[0,0,0,0,0,0,0,0,0,0],
 
 
 
-def imprimirTabla(tabla):
- 	for k in tabla:
+def imprimirmatriz(matriz):
+ 	for k in matriz:
  		for j in k:
  			print j,
  		print
  	print "--------------------------"
 	print "\n"
 
+	
 
-def revisarVecinos(tabla, pos): ##Revision de los vecinos de cada posicion
+
+def revisarVecinos(matriz, pos): ##Revision de los vecinos de cada posicion
  	
  	vecinos = 0
  	if pos == (0,0):
- 		for k in tabla[0:pos[0]+2]:
+ 		for k in matriz[0:pos[0]+2]:
  			for j in k[0:pos[1]+2]:
  				if j == 1:
  					vecinos+=1
  
  	elif pos[0] == 0:
- 		for k in tabla[0:pos[0]+2]:
+ 		for k in matriz[0:pos[0]+2]:
  			for j in k[pos[1]-1:pos[1]+2]:
  				if j == 1:
  					vecinos+=1
  
  	elif pos[1] == 0:
- 		for k in tabla[pos[0]-1:pos[0]+2]:
+ 		for k in matriz[pos[0]-1:pos[0]+2]:
  			for j in k[0:pos[1]+2]:
  				if j == 1:
  					vecinos+=1
  	
  	else:
- 		for k in tabla[pos[0]-1:pos[0]+2]:
+ 		for k in matriz[pos[0]-1:pos[0]+2]:
  			for j in k[pos[1]-1:pos[1]+2]:
  				if j == 1:
  					vecinos+=1
  
  
-	if(tabla[pos[0]][pos[1]] == 1):
+	if(matriz[pos[0]][pos[1]] == 1):
 		vecinos = vecinos -1
  
  	
  	return vecinos
 
 
-def nuevaGeneracion(tabla):
+def nuevaGeneracion(matriz):
 	vecinosVivos = 0 				
-	resultado = np.zeros_like(tabla)
-	for i in range(len(tabla)):
-		for j in range(len(tabla)):
-			vecinosVivos = revisarVecinos(tabla,(i,j))
-			if tabla[i][j] == 0 and vecinosVivos == 3:
+	resultado = np.zeros_like(matriz)
+	for i in range(len(matriz)):
+		for j in range(len(matriz)):
+			vecinosVivos = revisarVecinos(matriz,(i,j))
+			if matriz[i][j] == 0 and vecinosVivos == 3:
 				resultado[i][j] = 1
-			elif tabla[i][j] == 1 and vecinosVivos < 2:
+			elif matriz[i][j] == 1 and vecinosVivos < 2:
 				resultado[i][j] = 0
-			elif tabla[i][j] == 1 and vecinosVivos > 3:
+			elif matriz[i][j] == 1 and vecinosVivos > 3:
 				resultado[i][j] = 0
-			elif tabla[i][j] == 1 and (vecinosVivos == 2 or vecinosVivos == 3):
+			elif matriz[i][j] == 1 and (vecinosVivos == 2 or vecinosVivos == 3):
 				resultado[i][j] = 1
 
-	imprimirTabla(resultado)	
+	imprimirmatriz(resultado)	
 	raw_input('Presione enter para continuar:')	
 	os.system("clear")	
 	nuevaGeneracion(resultado)
  
 		
-imprimirTabla(a)
+imprimirmatriz(a)
 nuevaGeneracion(a)
