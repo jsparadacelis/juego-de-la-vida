@@ -83,6 +83,5 @@ def nuevaGeneracion(tabla):
 	nuevaGeneracion(resultado)
  
 		
- 
 imprimirTabla(a)
 nuevaGeneracion(a)
