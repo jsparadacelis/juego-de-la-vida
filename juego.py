@@ -18,15 +18,23 @@ a = [[0,0,0,0,0,0,0,0,0,0],
 
 
 
-def imprimirmatriz(matriz):
- 	for k in matriz:
- 		for j in k:
- 			print j,
- 		print
- 	print "--------------------------"
-	print "\n"
+def imprimirLista(lista):
+	if len(lista) == 1:
+		return str(lista[0])
+	else:
+		return str(lista[0]) +" "+str(imprimirLista(lista[1:]))
 
-	
+
+
+def imprimirmatriz(matriz):
+	if len(matriz) == 1:
+		return str(imprimirLista(matriz[0]))
+	else:
+		return str(imprimirLista(matriz[0]))+"\n"+str(imprimirmatriz(matriz[1:]))
+
+
+
+
 
 
 def revisarVecinos(matriz, pos): ##Revision de los vecinos de cada posicion
@@ -79,11 +87,15 @@ def nuevaGeneracion(matriz):
 			elif matriz[i][j] == 1 and (vecinosVivos == 2 or vecinosVivos == 3):
 				resultado[i][j] = 1
 
-	imprimirmatriz(resultado)	
+	print imprimirmatriz(resultado)
+	print "--------------------------"
+	print "\n"
 	raw_input('Presione enter para continuar:')	
 	os.system("clear")	
 	nuevaGeneracion(resultado)
  
 		
-imprimirmatriz(a)
+print imprimirmatriz(a)
+print "--------------------------"
+print "\n"
 nuevaGeneracion(a)
