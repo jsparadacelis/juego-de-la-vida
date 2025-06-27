@@ -1,6 +1,4 @@
-from dataclasses import dataclass
-from time import sleep, time
-import numpy as np
+from time import sleep
 import os
 
 INITIAL_MATRIX = [
