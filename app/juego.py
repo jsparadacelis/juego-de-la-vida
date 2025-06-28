@@ -62,8 +62,8 @@ def generate_new_matrix(matrix: list[list[int]]) -> list[list[int]]:
 
     new_matrix = [[0 for _ in range(col_number)] for _ in range(row_number)]
 
-    for i in range(len(matrix)):
-        for j in range(len(matrix)):
+    for i in range(row_number):
+        for j in range(col_number):
 
             current_pos = (i, j)
             current_value = matrix[i][j]
