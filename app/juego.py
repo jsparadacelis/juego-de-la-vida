@@ -54,20 +54,20 @@ def calculate_alive_neighbors(matrix: list[list[int]], pos: tuple[int, int]) -> 
     return alive_neighbors
 
 
-def generate_new_matrix(matriz: list[list[int]]) -> list[list[int]]:
+def generate_new_matrix(matrix: list[list[int]]) -> list[list[int]]:
     alive_neighbors = 0
     
-    row_number = len(matriz)
-    col_number = len(matriz[0])
+    row_number = len(matrix)
+    col_number = len(matrix[0])
 
     new_matrix = [[0 for _ in range(col_number)] for _ in range(row_number)]
 
-    for i in range(len(matriz)):
-        for j in range(len(matriz)):
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
 
             current_pos = (i, j)
-            current_value = matriz[i][j]
-            alive_neighbors = calculate_alive_neighbors(matriz, current_pos)
+            current_value = matrix[i][j]
+            alive_neighbors = calculate_alive_neighbors(matrix, current_pos)
 
             if current_value == 0 and alive_neighbors == 3:
                 new_matrix[i][j] = 1
